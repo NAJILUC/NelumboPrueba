@@ -22,7 +22,7 @@ El presente proyecto es reallizado para llevar a cabo la gestion de un parqueade
 1. Clonar el Repositorio : git clone https://github.com/NAJILUC/NelumboPrueba.git
 2. Crear una base de datos en PostgreSQL con el nombre 'parqueadero'
 3. Configurar las configuraciones de coneccion
-    # src/main/resources/application-dev.properties
+    '#' src/main/resources/application-dev.properties
         spring.datasource.url=jdbc:postgresql://localhost:5432/parqueadero
         spring.datasource.username=${USERNAME}
         spring.datasource.password=${PASSWORD}
