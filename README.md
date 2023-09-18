@@ -24,8 +24,8 @@ El presente proyecto es reallizado para llevar a cabo la gestion de un parqueade
 3. Configurar las configuraciones de coneccion
     # src/main/resources/application-dev.properties
         spring.datasource.url=jdbc:postgresql://localhost:5432/parqueadero
-        spring.datasource.username=postgres
-        spring.datasource.password=sasa
+        spring.datasource.username=${USERNAME}
+        spring.datasource.password=${PASSWORD}
 
 ## Uso
 1. Abrir cada carpeta ('mensaje', 'parqueadero') como proyecto independiente.
