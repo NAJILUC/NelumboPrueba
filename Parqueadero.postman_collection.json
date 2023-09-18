@@ -1,0 +1,3723 @@
+{
+	"info": {
+		"_postman_id": "4f8890f1-6ca2-4844-b16a-698cce3c2e1e",
+		"name": "Parqueadero",
+		"description": "Conjunto de consultas HTTP para probar los criterios de aceptacion del reto propuesto.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26017480"
+	},
+	"item": [
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "CRUD PARQUEADERO",
+					"item": [
+						{
+							"name": "Crear Parqueadero",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\" : \"Parking\",\r\n    \"vehiculosMaximos\" : 10,\r\n    \"costo\" : 10.0,\r\n    \"correo\" : \"pruebaSocdsioF@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/crearparqueadero",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"crearparqueadero"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Crear Parqueadero Sin Socio",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"nombre\" : \"Parking\",\r\n    \"vehiculosMaximos\" : 10,\r\n    \"costo\" : 10.0\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/crearparqueadero",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"crearparqueadero"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 14:54:22 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nombre\": \"Parking\",\n    \"vehiculosMaximos\": 10,\n    \"costo\": 10,\n    \"correoSocio\": \"Sin Socio asociado\"\n}"
+								},
+								{
+									"name": "Crear Parqueadero Con Socio",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"nombre\" : \"Parking\",\r\n    \"vehiculosMaximos\" : 10,\r\n    \"costo\" : 10.0,\r\n    \"correo\" : \"pruebaSocioF@gmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/crearparqueadero",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"crearparqueadero"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 14:55:41 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nombre\": \"Parking\",\n    \"vehiculosMaximos\": 10,\n    \"costo\": 10,\n    \"correoSocio\": \"pruebaSocioF@gmail.com\"\n}"
+								},
+								{
+									"name": "Crear Parqueadero Con Socio Inexistente",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"nombre\" : \"Parking\",\r\n    \"vehiculosMaximos\" : 10,\r\n    \"costo\" : 10.0,\r\n    \"correo\" : \"pruebaSocdsioF@gmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/crearparqueadero",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"crearparqueadero"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 14:55:59 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nombre\": \"Parking\",\n    \"vehiculosMaximos\": 10,\n    \"costo\": 10,\n    \"correoSocio\": \"Sin Socio asociado\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Actualizar Parqueadero",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"vehiculosMaximos\" : 59,\r\n    \"costo\" : 213.5,\r\n    \"correo\" : \"socioprueba@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/actualizarparqueadero/13",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"actualizarparqueadero",
+										"13"
+									]
+								},
+								"description": "Puede ser cualquiera de los 3 valores, lo unico obligatorio es el ID del parqueadero en la ruta de la peticion"
+							},
+							"response": [
+								{
+									"name": "Actualizar Parqueadero",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"vehiculosMaximos\" : 59,\r\n    \"costo\" : 213.5,\r\n    \"correo\" : \"socioprueba@gmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/actualizarparqueadero/13",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"actualizarparqueadero",
+												"13"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 14:59:15 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nombre\": \"Parking\",\n    \"vehiculosMaximos\": 59,\n    \"costo\": 213.5,\n    \"correoSocio\": \"socioprueba@gmail.com\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Ver Parqueadero Por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/verparqueadero/13",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"verparqueadero",
+										"13"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ver Parqueadero Por ID Existente",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/verparqueadero/13",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"verparqueadero",
+												"13"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 15:00:59 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nombre\": \"Parking\",\n    \"vehiculosMaximos\": 59,\n    \"costo\": 213.5,\n    \"correoSocio\": \"socioprueba@gmail.com\"\n}"
+								},
+								{
+									"name": "Ver Parqueadero Por ID Inexistente",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/verparqueadero/25",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"verparqueadero",
+												"25"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "37"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 15:01:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										}
+									],
+									"cookie": [],
+									"body": "El Parqueadero con el id 25 no existe"
+								}
+							]
+						},
+						{
+							"name": "Ver todos los parqueaderos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/verparqueaderos",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"verparqueaderos"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Ver todos los parqueaderos",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/verparqueaderos",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"verparqueaderos"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 15:01:39 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"nombre\": \"Donde deigo\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"pruebaa\",\n        \"vehiculosMaximos\": 59,\n        \"costo\": 213.5,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde deigods\",\n        \"vehiculosMaximos\": 110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde 7\",\n        \"vehiculosMaximos\": 110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde 7\",\n        \"vehiculosMaximos\": 110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde deiprueba\",\n        \"vehiculosMaximos\": 1110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde deiprueba\",\n        \"vehiculosMaximos\": 2,\n        \"costo\": 145.2,\n        \"correoSocio\": \"socioprueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde 7\",\n        \"vehiculosMaximos\": 110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"socioprueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde deigods\",\n        \"vehiculosMaximos\": 110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"admin@mail.com\"\n    },\n    {\n        \"nombre\": \"Parking\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 10,\n        \"correoSocio\": \"Sin socio asociado\"\n    },\n    {\n        \"nombre\": \"Parking\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 10,\n        \"correoSocio\": \"Sin socio asociado\"\n    },\n    {\n        \"nombre\": \"Parking\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 10,\n        \"correoSocio\": \"pruebaSocioF@gmail.com\"\n    },\n    {\n        \"nombre\": \"Parking\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 10,\n        \"correoSocio\": \"Sin socio asociado\"\n    },\n    {\n        \"nombre\": \"Parking\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 10,\n        \"correoSocio\": \"pruebaSocioF@gmail.com\"\n    },\n    {\n        \"nombre\": \"Parking\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 10,\n        \"correoSocio\": \"Sin socio asociado\"\n    },\n    {\n        \"nombre\": \"Parking\",\n        \"vehiculosMaximos\": 59,\n        \"costo\": 213.5,\n        \"correoSocio\": \"socioprueba@gmail.com\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Eliminar Parqueadero Por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/eliminarparqueadero/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"eliminarparqueadero",
+										"25"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Eliminar Parqueadero Por ID Existente",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/eliminarparqueadero/18",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"eliminarparqueadero",
+												"18"
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "57"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 15:06:28 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "El parqueadero con el id = 18 fue eliminado correctamente"
+								},
+								{
+									"name": "Eliminar Parqueadero Por ID Inexistente",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/eliminarparqueadero/25",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"eliminarparqueadero",
+												"25"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "37"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 15:06:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										}
+									],
+									"cookie": [],
+									"body": "El Parqueadero con el id 25 no existe"
+								}
+							]
+						},
+						{
+							"name": "Asociar Socio A Parqueadero",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"correo\" : \"socioprueba@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/asociarsocio/11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"asociarsocio",
+										"11"
+									]
+								},
+								"description": "Cuando se asocia un socio con correo inexistente no lo realiza y el parqueadero queda como estaba inicialmente"
+							},
+							"response": [
+								{
+									"name": "Asociar Socio A Parqueadero Existente",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"correo\" : \"socioprueba@gmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/asociarsocio/9",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"asociarsocio",
+												"9"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 15:07:40 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"nombre\": \"Donde 7\",\n    \"vehiculosMaximos\": 110,\n    \"costo\": 145.2,\n    \"correoSocio\": \"socioprueba@gmail.com\"\n}"
+								},
+								{
+									"name": "Asociar Socio A Parqueadero Inexistente",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"correo\" : \"socioprueba@gmail.com\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:8080/api/v1/parqueaderoadmin/asociarsocio/25",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"parqueaderoadmin",
+												"asociarsocio",
+												"25"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "37"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Sep 2023 15:08:16 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										}
+									],
+									"cookie": [],
+									"body": "El Parqueadero con el id 25 no existe"
+								}
+							]
+						}
+					],
+					"description": "Aca se encuentran las peticiones para probar el CRUD de repositorio solicitado"
+				},
+				{
+					"name": "Registrar Socio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Sovio prueba\",\r\n    \"correo\" : \"socioprueba@gmail.com\",\r\n    \"contrasena\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/usuario/registrarsocio",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"registrarsocio"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Registrar Socio Existente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\" : \"Sovio prueba\",\r\n    \"correo\" : \"socioprueba@gmail.com\",\r\n    \"contrasena\" : \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/usuario/registrarsocio",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"usuario",
+										"registrarsocio"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 14:51:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "El usuario Sovio prueba ya se encuentra registrado"
+						},
+						{
+							"name": "Registrar Socio Nuevo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\" : \"Sovio nuevo\",\r\n    \"correo\" : \"pruebaSocioF@gmail.com\",\r\n    \"contrasena\" : \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/usuario/registrarsocio",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"usuario",
+										"registrarsocio"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 14:51:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"nombre\": \"Sovio nuevo\",\n    \"correo\": \"pruebaSocioF@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Vehiculos En Un Parqueadero Especifico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/parqueaderoadmin/vehiculosenparqueadero/25",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"parqueaderoadmin",
+								"vehiculosenparqueadero",
+								"25"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vehiculos En Un Parqueadero Especifico Existente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/vehiculosenparqueadero/11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"vehiculosenparqueadero",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:10:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 11,\n        \"placa\": \"IOF911\",\n        \"horaIngreso\": \"2023-09-17T18:53:50.598+00:00\"\n    },\n    {\n        \"id\": 12,\n        \"placa\": \"IOg911\",\n        \"horaIngreso\": \"2023-09-17T18:53:58.933+00:00\"\n    },\n    {\n        \"id\": 13,\n        \"placa\": \"KDKDKD\",\n        \"horaIngreso\": \"2023-09-17T18:55:14.310+00:00\"\n    },\n    {\n        \"id\": 23,\n        \"placa\": \"URK123\",\n        \"horaIngreso\": \"2023-09-17T22:50:36.226+00:00\"\n    }\n]"
+						},
+						{
+							"name": "Vehiculos En Un Parqueadero Especifico Inexistente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/vehiculosenparqueadero/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"vehiculosenparqueadero",
+										"25"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:10:18 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Enviar Mensaje",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImV4cCI6MTY5NTA2ODA2MCwiaWQiOjEsIm5vbWJyZSI6IkFkbWluIiwicm9sIjoiQURNSU4ifQ.DstZ56YHY-vK44QH0uYERVJF669oN0iemyVGi6-OPcIKnSVZon_YkEMNU7pODHVh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"prueba@gmail.com\",\r\n    \"placa\" : \"IOF91G\",\r\n    \"mensaje\" : \"Mensaje de prueba\",\r\n    \"parqueaderoNombre\" : \"Nombre de prueba2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/parqueaderoadmin/enviarmensaje",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"parqueaderoadmin",
+								"enviarmensaje"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Enviar Mensaje",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"prueba@gmail.com\",\r\n    \"placa\" : \"IOF91G\",\r\n    \"mensaje\" : \"Mensaje de prueba\",\r\n    \"parqueaderoNombre\" : \"Nombre de prueba2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderoadmin/enviarmensaje",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderoadmin",
+										"enviarmensaje"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:15:29 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"Correo Enviado\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Las peticiones dentro de ADMIN requieren el token del usuario ADMIN para poder ejecutarse"
+		},
+		{
+			"name": "SOCIO",
+			"item": [
+				{
+					"name": "Ingreso De Vehiculo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idParqueadero\": 6,\r\n    \"idSocio\": 10,\r\n    \"placa\":\"3PRUEB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/parqueaderosocio/ingresovehiculo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"parqueaderosocio",
+								"ingresovehiculo"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ingreso De Vehiculo Y Socio No Corresponde",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idParqueadero\": 6,\r\n    \"idSocio\": 11,\r\n    \"placa\":\"Urk123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/ingresovehiculo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"ingresovehiculo"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:16:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "El ID del socio no corresponde al ID del socio asociado al parqueadero"
+						},
+						{
+							"name": "Ingreso De Vehiculo Y Parqueadero No Existe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idParqueadero\": 23,\r\n    \"idSocio\": 11,\r\n    \"placa\":\"Urk123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/ingresovehiculo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"ingresovehiculo"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:17:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "El Parqueadero con el id 23 no existe"
+						},
+						{
+							"name": "Ingreso De Vehiculo Correcto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idParqueadero\": 6,\r\n    \"idSocio\": 10,\r\n    \"placa\":\"1PRUEB\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/ingresovehiculo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"ingresovehiculo"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:17:32 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 34\n}"
+						},
+						{
+							"name": "Ingreso De Vehiculo Y Parqueadero Lleno",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idParqueadero\": 6,\r\n    \"idSocio\": 10,\r\n    \"placa\":\"3PRUEB\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/ingresovehiculo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"ingresovehiculo"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:18:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "No hay campo en el parqueadero"
+						}
+					]
+				},
+				{
+					"name": "Salida De Vehiculo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\" : \"IOF911\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/parqueaderosocio/salidavehiculo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"parqueaderosocio",
+								"salidavehiculo"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Salida De Vehiculo Exitosa",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"placa\" : \"IOF911\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/salidavehiculo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"salidavehiculo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:19:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mensaje\": \"Salida registrada\"\n}"
+						},
+						{
+							"name": "Salida De Vehiculo Inexistente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"placa\" : \"IOF911\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/salidavehiculo",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"salidavehiculo"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:23:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "No se puede Registrar Salida, no existe la placa en algun parqueadero"
+						}
+					]
+				},
+				{
+					"name": "Parqueaderos Asignados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNjg1NjUsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.HzDMhYQt2cyHzHCT1IFY0be4FUnSR4dNP1X8p060imDAm7ZDZSKhesN67QI0wRyy",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/parqueaderosocio/parqueaderosasignados/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"parqueaderosocio",
+								"parqueaderosasignados",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Parqueaderos Asignados Socio No Existe O No tiene Parqueaderos Asociados",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/parqueaderosasignados/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"parqueaderosasignados",
+										"3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:23:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "El Socio no tiene parqueaderos asociados o el Socio no existe"
+						},
+						{
+							"name": "Parqueaderos Asignados Socio Existe Y Tiene Parqueaderos Asociados",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/parqueaderosasignados/7",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"parqueaderosasignados",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:24:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"nombre\": \"Donde deigo\",\n        \"vehiculosMaximos\": 10,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"pruebaa\",\n        \"vehiculosMaximos\": 59,\n        \"costo\": 213.5,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde deigods\",\n        \"vehiculosMaximos\": 110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde 7\",\n        \"vehiculosMaximos\": 110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    },\n    {\n        \"nombre\": \"Donde deiprueba\",\n        \"vehiculosMaximos\": 1110,\n        \"costo\": 145.2,\n        \"correoSocio\": \"correopdasdasraaueba@gmail.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Vehiculos En Un Parqueadero",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/parqueaderosocio/vehiculosenparqueadero/15",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"parqueaderosocio",
+								"vehiculosenparqueadero",
+								"15"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vehiculos En Un Parqueadero Existente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/vehiculosenparqueadero/11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"vehiculosenparqueadero",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:25:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"placa\": \"IOg911\",\n        \"horaIngreso\": \"2023-09-17T18:53:58.933+00:00\"\n    },\n    {\n        \"id\": 13,\n        \"placa\": \"KDKDKD\",\n        \"horaIngreso\": \"2023-09-17T18:55:14.310+00:00\"\n    },\n    {\n        \"id\": 23,\n        \"placa\": \"URK123\",\n        \"horaIngreso\": \"2023-09-17T22:50:36.226+00:00\"\n    }\n]"
+						},
+						{
+							"name": "Vehiculos En Un Parqueadero Vacio O Inexistente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/parqueaderosocio/vehiculosenparqueadero/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"parqueaderosocio",
+										"vehiculosenparqueadero",
+										"25"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:26:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				}
+			],
+			"description": "Las peticiones dentro de SOCIO requieren el token del usuario SOCIO para poder ejecutarse"
+		},
+		{
+			"name": "INDICADORES",
+			"item": [
+				{
+					"name": "Vehiculos Frecuentes Todos Los Parqueaderos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/indicadores/frecuentes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"indicadores",
+								"frecuentes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vehiculos Frecuentes En Todos Los Parqueaderos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/frecuentes",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"frecuentes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:35:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"vehiculo\": \"IOF93G\",\n        \"visitas\": 3\n    },\n    {\n        \"vehiculo\": \"IOF911\",\n        \"visitas\": 2\n    },\n    {\n        \"vehiculo\": \"IOF91G\",\n        \"visitas\": 1\n    },\n    {\n        \"vehiculo\": \"IOJ013\",\n        \"visitas\": 1\n    },\n    {\n        \"vehiculo\": \"IOF92G\",\n        \"visitas\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Vehiculos Frecuentes De Un Parqueadero",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/indicadores/frecuentes/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"indicadores",
+								"frecuentes",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vehiculos Frecuentes De Un Parqueadero Existente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/frecuentes/6",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"frecuentes",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:35:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"vehiculo\": \"IOF93G\",\n        \"visitas\": 3\n    },\n    {\n        \"vehiculo\": \"IOF91G\",\n        \"visitas\": 1\n    },\n    {\n        \"vehiculo\": \"IOF92G\",\n        \"visitas\": 1\n    }\n]"
+						},
+						{
+							"name": "Vehiculos Frecuentes De Un Parqueadero Inexistente O Sin Registros",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/frecuentes/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"frecuentes",
+										"25"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:36:03 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Vehiculos Nuevos De Un Parqueadero",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/indicadores/vehiculosnuevos/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"indicadores",
+								"vehiculosnuevos",
+								"11"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vehiculos Nuevos De Un Parqueadero Existente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/vehiculosnuevos/11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"vehiculosnuevos",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:36:28 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 12,\n        \"placa\": \"IOg911\",\n        \"horaIngreso\": \"2023-09-17T18:53:58.933+00:00\"\n    },\n    {\n        \"id\": 13,\n        \"placa\": \"KDKDKD\",\n        \"horaIngreso\": \"2023-09-17T18:55:14.310+00:00\"\n    },\n    {\n        \"id\": 23,\n        \"placa\": \"URK123\",\n        \"horaIngreso\": \"2023-09-17T22:50:36.226+00:00\"\n    }\n]"
+						},
+						{
+							"name": "Vehiculos Nuevos De Un Parqueadero Inexistente O Sin Registros",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/vehiculosnuevos/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"vehiculosnuevos",
+										"25"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:36:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Vehiculos Que Coincidan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/indicadores/coincidencia/ru",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"indicadores",
+								"coincidencia",
+								"ru"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vehiculos Que Coincidan Con La Cadena",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/coincidencia/ru",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"coincidencia",
+										"ru"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:38:00 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 34,\n        \"placa\": \"1PRUEB\",\n        \"horaIngreso\": \"2023-09-18T15:17:32.601+00:00\"\n    },\n    {\n        \"id\": 35,\n        \"placa\": \"2PRUEB\",\n        \"horaIngreso\": \"2023-09-18T15:17:53.877+00:00\"\n    }\n]"
+						},
+						{
+							"name": "Vehiculos Que Coincidan Y No Hay Coincidencia",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/coincidencia/rudasdasd",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"coincidencia",
+										"rudasdasd"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:38:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Ganancias De Parqueadero Por Dia",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/indicadores/gananciasdia/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"indicadores",
+								"gananciasdia",
+								"11"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ganancias De Parqueadero Existente Por Dia",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/gananciasdia/11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"gananciasdia",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:38:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "3339.6"
+						},
+						{
+							"name": "Ganancias De Parqueadero Inexistente O Sin Registros Por Dia",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/gananciasdia/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"gananciasdia",
+										"25"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:42:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "No hay registros del parqueadero 25"
+						}
+					]
+				},
+				{
+					"name": "Ganancias De Parqueadero Por Mes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/indicadores/gananciasmes/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"indicadores",
+								"gananciasmes",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ganancias De Parqueadero Existente Por Mes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/gananciasmes/6",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"gananciasmes",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:44:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "290.4"
+						},
+						{
+							"name": "Ganancias De Parqueadero Inexistente O Sin Registros Por Mes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/gananciasmes/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"gananciasmes",
+										"25"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:44:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "No hay registros del parqueadero 25"
+						}
+					]
+				},
+				{
+					"name": "Ganancias De Parqueadero Por Anio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzb2Npb3BydWViYUBnbWFpbC5jb20iLCJleHAiOjE2OTUwNzAyMTcsImlkIjoxMCwibm9tYnJlIjoiU292aW8gcHJ1ZWJhIiwicm9sIjoiU09DSU8ifQ.v_28SdkdtKVoV6OUm7Rrgb-ypIEkE9B_TPBV5kSu9qsH5efhwGqLPKr5gAjw6ZVj",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/indicadores/gananciasanio/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"indicadores",
+								"gananciasanio",
+								"11"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ganancias De Parqueadero Existente Por Anio",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/gananciasanio/11",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"gananciasanio",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:45:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "3339.6"
+						},
+						{
+							"name": "Ganancias De Parqueadero Inexistente O Sin Registros Por Anio",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/v1/indicadores/gananciasanio/25",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"indicadores",
+										"gananciasanio",
+										"25"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Sep 2023 15:45:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "No hay registros del parqueadero 25"
+						}
+					]
+				}
+			],
+			"description": "Para ver los resultados de los indicadores se puede con un token de ADMIN o de SOCIO exceptuando las peticiones para ver las ganancias por dia, mes y año segun los requerimientos establecidos, esas peticiones requieren un token de SOCIO."
+		},
+		{
+			"name": "MENSAJE",
+			"item": [
+				{
+					"name": "localhost:8081/api/v1/mensaje/enviar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"prueba@gmail.com\",\r\n    \"placa\" : \"IOF91G\",\r\n    \"mensaje\" : \"Mensaje de prueba\",\r\n    \"parqueaderoNombre\" : \"Nombre de prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/mensaje/enviar",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"mensaje",
+								"enviar"
+							]
+						},
+						"description": "Peticion de prueba para el microservicio que simula enviar un mensaje"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LOGIN",
+			"item": [
+				{
+					"name": "ADMIN",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\":\"admin@mail.com\",\r\n    \"clave\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Peticiones para obtener el token ADMIN o SOCIO segun las credenciales"
+					},
+					"response": []
+				},
+				{
+					"name": "SOCIO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"correo\":\"socioprueba@gmail.com\",\r\n    \"clave\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

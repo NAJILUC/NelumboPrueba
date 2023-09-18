@@ -1,0 +1,22 @@
+package com.nelumbo.parqueadero.dto.request;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class SalidaRequest {
+
+    @Length(min = 6, max = 6)
+    @NotBlank(message = "La placa es requerida")
+    @NotNull(message = "La placa es requerida")
+    @Pattern(regexp = "^[a-zA-Z0-9&&[^ñ]]*$", message = "No se permite caracteres especiales ni la letra ñ")
+    private String placa;
+}
