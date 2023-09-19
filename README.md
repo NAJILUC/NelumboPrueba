@@ -42,16 +42,10 @@ spring.datasource.password=${PASSWORD}
 # src/main/resources/application-dev.properties
 ``` 
 La propiedad
-
-``` 
-5. Despues de ejecutarlo por primera vez si se desea que la base de datos no se borre y se mantengan los datos actualizar en el archivo
 ``` 
 # spring.jpa.hibernate.ddl-auto=create
 ``` 
 por 
-
-``` 
-5. Despues de ejecutarlo por primera vez si se desea que la base de datos no se borre y se mantengan los datos actualizar en el archivo
 ``` 
 # spring.jpa.hibernate.ddl-auto=update
 ``` 
