@@ -3,7 +3,9 @@ package com.nelumbo.parqueadero.service.impl;
 import com.nelumbo.parqueadero.domain.Usuario;
 import com.nelumbo.parqueadero.dto.request.SocioRequest;
 import com.nelumbo.parqueadero.dto.response.SocioResponse;
+import com.nelumbo.parqueadero.exception.ErrorResponseMessage;
 import com.nelumbo.parqueadero.exception.ObjetoDuplicadoException;
+import com.nelumbo.parqueadero.exception.UsuarioDuplicadoException;
 import com.nelumbo.parqueadero.repository.UsuarioRepository;
 import com.nelumbo.parqueadero.service.RolService;
 import com.nelumbo.parqueadero.service.UsuarioService;
@@ -37,12 +39,11 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .fechaRegistro(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
                 .rol(rolService.obtenerRolPorId(2L))
                 .build();
-
         try{
             usuarioRepository.save(socio);
             return new SocioResponse(socioRequest.getNombre(),socioRequest.getCorreo());
         } catch (DataIntegrityViolationException e) {
-            throw new ObjetoDuplicadoException("El usuario " + socioRequest.getNombre() + " ya se encuentra registrado");
+            throw new UsuarioDuplicadoException("El usuario " + socioRequest.getNombre() + " ya se encuentra registrado");
         }
     }
 

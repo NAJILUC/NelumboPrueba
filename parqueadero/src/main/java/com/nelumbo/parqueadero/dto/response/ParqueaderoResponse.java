@@ -14,6 +14,7 @@ import javax.persistence.Column;
 @Data
 public class ParqueaderoResponse {
 
+    private Long id;
     private String nombre;
     private Long vehiculosMaximos;
     private double costo;

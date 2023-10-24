@@ -45,14 +45,14 @@ public class ParqueaderoAdminController {
     @Autowired
     private MicroservicioMensajeService microservicioMensajeService;
 
-    @PostMapping("/crearparqueadero")
+    @PostMapping("/parqueaderos")
     @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public ParqueaderoResponse registrarParqueadero(@Valid @RequestBody ParqueaderoRequest parqueaderoRequest){
         return parqueaderoService.agregarParqueadero(parqueaderoRequest);
     }
 
-    @PutMapping("/actualizarparqueadero/{id_Parqueadero}")
+    @PutMapping("/parqueaderos/{id_Parqueadero}")
     @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     public ParqueaderoResponse actualizarParqueadero(@PathVariable(name = "id_Parqueadero") Long id_Parqueadero,
@@ -60,23 +60,23 @@ public class ParqueaderoAdminController {
         return parqueaderoService.actualizarParqueadero(id_Parqueadero,parqueaderoActualizarRequest);
     }
 
-    @GetMapping("/verparqueadero/{id_Parqueadero}")
+    @GetMapping("/parqueaderos/{id_Parqueadero}")
     @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     public ParqueaderoResponse verParqueadero(@PathVariable(name = "id_Parqueadero") Long id_Parqueadero){
         return parqueaderoService.verParqueadero(id_Parqueadero);
     }
 
-    @GetMapping("/verparqueaderos")
+    @GetMapping("/parqueaderos")
     @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     public List<ParqueaderoResponse> verParqueaderos(){
         return parqueaderoService.verParqueaderos();
     }
 
-    @DeleteMapping("/eliminarparqueadero/{id_Parqueadero}")
+    @DeleteMapping("/parqueaderos/{id_Parqueadero}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     public String eliminarParqueadero(@PathVariable(name = "id_Parqueadero") Long id_Parqueadero){
         parqueaderoService.eliminarParqueadero(id_Parqueadero);
         return "El parqueadero con el id = " + id_Parqueadero + " fue eliminado correctamente";

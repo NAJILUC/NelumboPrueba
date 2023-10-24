@@ -30,6 +30,12 @@ public class VehiculoServiceImpl implements VehiculoService {
             throw new ObjetoDuplicadoException("El vehiculo con placa " + placa + " ya se encuentra registrado");
         }
     }
+    @Override
+    public Boolean existeVehiculoEntrada(String placa) {
+        Optional<Vehiculo> existe = vehiculoRepository.findByPlaca(placa.toUpperCase());
+        if(!existe.isEmpty()) throw new VehiculoExisteException("El vehiculo ya existe en algun parquedero");
+        return existe != null ? true : false;
+    }
 
     @Override
     public Boolean existeVehiculo(String placa) {

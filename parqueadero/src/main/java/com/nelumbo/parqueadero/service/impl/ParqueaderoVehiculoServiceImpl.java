@@ -7,16 +7,12 @@ import com.nelumbo.parqueadero.dto.request.EntradaVehiculoRequest;
 import com.nelumbo.parqueadero.dto.request.SalidaRequest;
 import com.nelumbo.parqueadero.dto.response.IndicadorVehiculoResponse;
 import com.nelumbo.parqueadero.dto.response.VehiculoResponse;
-import com.nelumbo.parqueadero.exception.NotFoundException;
 import com.nelumbo.parqueadero.exception.ObjetoDuplicadoException;
 import com.nelumbo.parqueadero.exception.VehiculoExisteException;
 import com.nelumbo.parqueadero.feignClient.MicroservicioMensajeService;
 import com.nelumbo.parqueadero.feignClient.dto.request.MensajeRequest;
 import com.nelumbo.parqueadero.repository.ParqueaderoVehiculoRepository;
-import com.nelumbo.parqueadero.service.HistoricoService;
-import com.nelumbo.parqueadero.service.ParqueaderoService;
-import com.nelumbo.parqueadero.service.ParqueaderoVehiculoService;
-import com.nelumbo.parqueadero.service.VehiculoService;
+import com.nelumbo.parqueadero.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -49,6 +45,9 @@ public class ParqueaderoVehiculoServiceImpl implements ParqueaderoVehiculoServic
     @Autowired
     private MicroservicioMensajeService microservicioMensajeService;
 
+    @Autowired
+    private IToken iToken;
+
 
     @Override
     public List<VehiculoResponse> vehiculosEnParqueadero(Long id) {
@@ -68,10 +67,11 @@ public class ParqueaderoVehiculoServiceImpl implements ParqueaderoVehiculoServic
     @Override
     @Transactional
     public Long entradaVehiculo(EntradaVehiculoRequest entradaVehiculoRequest) {
-        if(parqueaderoService.parqueaderoValido(entradaVehiculoRequest.getIdSocio(), entradaVehiculoRequest.getIdParqueadero())){
+
+        if(parqueaderoService.parqueaderoValido(iToken.getUserAuthenticatedId(iToken.getBearerToken()), entradaVehiculoRequest.getIdParqueadero())){
             Long vehiculosMax = parqueaderoService.verParqueadero(entradaVehiculoRequest.getIdParqueadero()).getVehiculosMaximos();
             Long vehiculosDentro = Long.valueOf(vehiculosEnParqueadero(entradaVehiculoRequest.getIdParqueadero()).size());
-            if(vehiculosMax-vehiculosDentro>0 && !vehiculoService.existeVehiculo(entradaVehiculoRequest.getPlaca())){
+            if(vehiculosMax-vehiculosDentro>0 && !vehiculoService.existeVehiculoEntrada(entradaVehiculoRequest.getPlaca())){
                 vehiculoService.agregarVehiculo(entradaVehiculoRequest.getPlaca());
                 ParqueaderoVehiculo parqueaderoVehiculo = ParqueaderoVehiculo.builder()
                         .vehiculo(vehiculoService.obtenerVehiculo(entradaVehiculoRequest.getPlaca()))
@@ -123,6 +123,7 @@ public class ParqueaderoVehiculoServiceImpl implements ParqueaderoVehiculoServic
             throw new VehiculoExisteException("No se puede Registrar Salida, no existe la placa en algun parqueadero");
         }
         Vehiculo vehiculo = vehiculoService.obtenerVehiculo(salidaRequest.getPlaca());
+        Long id = iToken.getUserAuthenticatedId(iToken.getBearerToken());
         ParqueaderoVehiculo parqueaderoVehiculo = new ParqueaderoVehiculo();
         if(parqueaderoVehiculoRepository.findByVehiculoId(vehiculo.getId()).get()!=null)
             parqueaderoVehiculo=parqueaderoVehiculoRepository.findByVehiculoId(vehiculo.getId()).get();

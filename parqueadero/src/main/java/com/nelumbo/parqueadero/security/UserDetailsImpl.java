@@ -2,6 +2,7 @@ package com.nelumbo.parqueadero.security;
 
 import com.nelumbo.parqueadero.domain.Usuario;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +22,11 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-        return usuario.getContrasena();
+        try {
+            return usuario.getContrasena();
+        } catch (Exception e) {
+            throw new BadCredentialsException("Usuario invalido");
+        }
     }
 
     @Override

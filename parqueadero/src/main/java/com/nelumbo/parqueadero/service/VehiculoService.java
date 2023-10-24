@@ -10,6 +10,7 @@ public interface VehiculoService {
     String agregarVehiculo(String placa);
 
     Boolean existeVehiculo(String placa);
+    Boolean existeVehiculoEntrada(String placa);
 
     Vehiculo obtenerVehiculo(String placa);
 

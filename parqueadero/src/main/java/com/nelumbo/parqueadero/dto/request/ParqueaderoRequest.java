@@ -27,6 +27,8 @@ public class ParqueaderoRequest {
     @Min(value = 1, message = "Debe ser minimo 1")
     private Double costo;
 
+    @NotNull(message = "No puede ser nulo")
+    @NotBlank(message = "El correo es requerido")
     @Email(message = "Ingrese un correo valido")
     private String correo;
 }

@@ -19,8 +19,6 @@ public class EntradaVehiculoRequest {
     @Min(value = 1, message = "Ingrese un numero de parqueadero valido")
     private Long idParqueadero;
 
-    private Long idSocio;
-
     @Length(min = 6, max = 6)
     @NotBlank(message = "La placa es requerida")
     @NotNull(message = "La placa es requerida")
