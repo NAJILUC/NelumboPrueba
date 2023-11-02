@@ -1,7 +1,6 @@
 package com.nelumbo.parqueadero.service.impl;
 
 import com.nelumbo.parqueadero.domain.Historico;
-import com.nelumbo.parqueadero.exception.ErrorResponseMessage;
 import com.nelumbo.parqueadero.exception.NotFoundException;
 import com.nelumbo.parqueadero.repository.HistoricoRepository;
 import com.nelumbo.parqueadero.service.HistoricoService;
@@ -35,22 +34,27 @@ public class HistoricoServiceImpl implements HistoricoService {
 
     @Override
     public Double gananciasHoy(Long idParqueadero) {
-        if(historicoRepository.gananciasHoy(Date.from(LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero)==null)
+        if(historicoRepository.gananciasDesde(Date.from(LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero)==null)
             throw new NotFoundException("No hay registros del parqueadero " + idParqueadero);
-        return historicoRepository.gananciasHoy(Date.from(LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero);
+        return historicoRepository.gananciasDesde(Date.from(LocalDate.now().minusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero);
     }
 
     @Override
     public Double gananciasMes(Long idParqueadero) {
-        if(historicoRepository.gananciasHoy(Date.from(LocalDate.now().minusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero)==null)
+        if(historicoRepository.gananciasDesde(Date.from(LocalDate.now().minusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero)==null)
             throw new NotFoundException("No hay registros del parqueadero " + idParqueadero);
-        return historicoRepository.gananciasHoy(Date.from(LocalDate.now().minusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero);
+        return historicoRepository.gananciasDesde(Date.from(LocalDate.now().minusMonths(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero);
     }
 
     @Override
     public Double gananciasAnio(Long idParqueadero) {
-        if(historicoRepository.gananciasHoy(Date.from(LocalDate.now().minusYears(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero)==null)
+        if(historicoRepository.gananciasDesde(Date.from(LocalDate.now().minusYears(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero)==null)
             throw new NotFoundException("No hay registros del parqueadero " + idParqueadero);
-        return historicoRepository.gananciasHoy(Date.from(LocalDate.now().minusYears(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero);
+        return historicoRepository.gananciasDesde(Date.from(LocalDate.now().minusYears(1).atStartOfDay(ZoneId.systemDefault()).toInstant()), idParqueadero);
+    }
+
+    @Override
+    public List<String> historico(Long idParqueadero) {
+        return historicoRepository.historialVehiculos(idParqueadero);
     }
 }

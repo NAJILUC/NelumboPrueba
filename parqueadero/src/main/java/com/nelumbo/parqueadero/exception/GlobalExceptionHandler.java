@@ -9,38 +9,72 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ErrorResponseMessage.class)
-    public ResponseEntity<String> errorResponseMessage(ErrorResponseMessage ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ex.getMessage());
+    public ResponseEntity<CustomErrorResponse> errorResponseMessage(ErrorResponseMessage ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.toString(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<String> notFoundException(NotFoundException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ex.getMessage());
+    public ResponseEntity<CustomErrorResponse> notFoundException(NotFoundException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.toString(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(ObjetoDuplicadoException.class)
-    public ResponseEntity<String> objetoDuplicado(ObjetoDuplicadoException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ex.getMessage());
+    public ResponseEntity<CustomErrorResponse> objetoDuplicado(ObjetoDuplicadoException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.toString(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(VehiculoExisteException.class)
-    public ResponseEntity<String> vehiculoExisteException(VehiculoExisteException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ex.getMessage());
+    public ResponseEntity<CustomErrorResponse> vehiculoExisteException(VehiculoExisteException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.toString(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
-   // @ExceptionHandler(UsuarioDuplicadoException.class)
-    public ResponseEntity<String> usuarioDuplicado(UsuarioDuplicadoException ex) {
-        String errorMessage = "El usuario ya se encuentra registrado";
-        return new ResponseEntity<>(errorMessage,HttpStatus.BAD_REQUEST);
+   @ExceptionHandler(UsuarioDuplicadoException.class)
+   public ResponseEntity<CustomErrorResponse> handleUsuarioDuplicadoException(UsuarioDuplicadoException ex) {
+       CustomErrorResponse errorResponse = new CustomErrorResponse(
+               HttpStatus.BAD_REQUEST.value(),
+               HttpStatus.BAD_REQUEST.toString(),
+               ex.getMessage()
+       );
+       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+   }
+
+    @ExceptionHandler(CampoInsuficienteException.class)
+    public ResponseEntity<CustomErrorResponse> handleCampoInsuficiente(CampoInsuficienteException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.toString(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(AdminAsociadoException.class)
-    public ResponseEntity<String> adminAsociado(AdminAsociadoException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(ex.getMessage());
+    public ResponseEntity<CustomErrorResponse> adminAsociado(AdminAsociadoException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.toString(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 }

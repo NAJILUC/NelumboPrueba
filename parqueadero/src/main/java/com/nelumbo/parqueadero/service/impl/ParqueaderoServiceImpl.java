@@ -11,6 +11,7 @@ import com.nelumbo.parqueadero.exception.ObjetoDuplicadoException;
 import com.nelumbo.parqueadero.repository.ParqueaderoRepository;
 import com.nelumbo.parqueadero.service.ParqueaderoService;
 import com.nelumbo.parqueadero.service.UsuarioService;
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ParqueaderoServiceImpl implements ParqueaderoService {
@@ -33,11 +35,11 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
 
     @Override
     public ParqueaderoResponse agregarParqueadero(ParqueaderoRequest parqueaderoRequest) {
-        if(usuarioService.obtenerUsuarioPorCorreo(parqueaderoRequest.getCorreo()).getRol().getId()==1)
-            throw new AdminAsociadoException("El usuario administrador no puede ser socio de un parqueadero");
-
         Usuario socio = usuarioService.obtenerUsuarioPorCorreo(parqueaderoRequest.getCorreo());
         if(socio==null) throw new NotFoundException("El socio con el correo " + parqueaderoRequest.getCorreo() + "no existe");
+
+        if(socio.getRol().getId()==1)
+            throw new AdminAsociadoException("El usuario administrador no puede ser socio de un parqueadero");
 
         Parqueadero parqueadero = Parqueadero.builder()
                 .nombre(parqueaderoRequest.getNombre())
@@ -49,9 +51,13 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
 
         try {
             Long id = parqueaderoRepository.save(parqueadero).getId();
-            return new ParqueaderoResponse(id,parqueadero.getNombre(),parqueadero.getVehiculosMaximos(),
-                    parqueadero.getCosto(),parqueadero.getUsuario() != null ?
-                    parqueadero.getUsuario().getCorreo() : "Sin Socio asociado");
+            return ParqueaderoResponse.builder()
+                    .id(id)
+                    .nombre(parqueadero.getNombre())
+                    .vehiculosMaximos(parqueadero.getVehiculosMaximos())
+                    .costo(parqueadero.getCosto())
+                    .correoSocio(parqueadero.getUsuario().getCorreo())
+                    .build();
         } catch (DataIntegrityViolationException e) {
             throw new ObjetoDuplicadoException("El parqueadero " + parqueadero.getNombre() + " ya se encuentra registrado");
         }
@@ -60,9 +66,17 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
     @Override
     public ParqueaderoResponse actualizarParqueadero(Long id, ParqueaderoActualizarRequest parqueaderoActualizarRequest) {
         Parqueadero parqueadero = buscarParqueaderoPorId(id);
+        Usuario user = null;
 
-        if(usuarioService.obtenerUsuarioPorCorreo(parqueaderoActualizarRequest.getCorreo()).getRol().getId()==1)
-            throw new AdminAsociadoException("El usuario administrador no puede ser socio de un parqueadero");
+        if(parqueaderoActualizarRequest.getCorreo()!=null){
+            try {
+                user = usuarioService.obtenerUsuarioPorCorreo(parqueaderoActualizarRequest.getCorreo());
+                if(user.getRol().getId()==1)
+                    throw new AdminAsociadoException("El usuario administrador no puede ser socio de un parqueadero");
+            }catch (Exception e){
+                throw  new NotFoundException("El correo " + parqueaderoActualizarRequest.getCorreo() + " No esta asociado a ningun socio");
+            }
+        }
 
         if(parqueadero != null){
             parqueadero.setVehiculosMaximos(parqueaderoActualizarRequest.getVehiculosMaximos() != null ?
@@ -72,7 +86,7 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
             parqueadero.setCosto(parqueaderoActualizarRequest.getCosto() != null ?
                     parqueaderoActualizarRequest.getCosto() : parqueadero.getCosto());
             if(usuarioService.obtenerUsuarioPorCorreo(parqueaderoActualizarRequest.getCorreo())!= null)
-                parqueadero.setUsuario(usuarioService.obtenerUsuarioPorCorreo(parqueaderoActualizarRequest.getCorreo()));
+                parqueadero.setUsuario(user);
             parqueaderoRepository.save(parqueadero);
         }
         return new ParqueaderoResponse(id,parqueadero.getNombre(),parqueadero.getVehiculosMaximos(),parqueadero.getCosto()
@@ -87,22 +101,27 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
     @Override
     public ParqueaderoResponse verParqueadero(Long id) {
         Parqueadero parqueadero = buscarParqueaderoPorId(id);
-        return new ParqueaderoResponse(id,parqueadero.getNombre(),parqueadero.getVehiculosMaximos(),parqueadero.getCosto()
-                ,parqueadero.getUsuario().getCorreo());
+        return ParqueaderoResponse.builder()
+                .id(parqueadero.getId())
+                .nombre(parqueadero.getNombre())
+                .vehiculosMaximos(parqueadero.getVehiculosMaximos())
+                .costo(parqueadero.getCosto())
+                .correoSocio(parqueadero.getUsuario().getCorreo())
+                .build();
     }
 
     @Override
     public List<ParqueaderoResponse> verParqueaderos() {
-        List<ParqueaderoResponse> parqueaderosResponses = new ArrayList<>();
-        List<Parqueadero> parqueaderos = parqueaderoRepository.findAll();
-        for (Parqueadero parqueadero:parqueaderos) {
-            if(parqueadero.getUsuario()==null)
-                parqueaderosResponses.add(new ParqueaderoResponse(parqueadero.getId(),parqueadero.getNombre(),parqueadero.getVehiculosMaximos(),parqueadero.getCosto()
-                        ,"Sin socio asociado"));
-            else parqueaderosResponses.add(new ParqueaderoResponse(parqueadero.getId(),parqueadero.getNombre(),parqueadero.getVehiculosMaximos(),parqueadero.getCosto()
-                    ,parqueadero.getUsuario().getCorreo()));
-        }
-        return parqueaderosResponses;
+        return parqueaderoRepository.findAll()
+                .stream()
+                .map(parqueadero -> ParqueaderoResponse.builder()
+                        .id(parqueadero.getId())
+                        .nombre(parqueadero.getNombre())
+                        .vehiculosMaximos(parqueadero.getVehiculosMaximos())
+                        .costo(parqueadero.getCosto())
+                        .correoSocio(parqueadero.getUsuario().getCorreo())
+                        .build())
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -128,14 +147,16 @@ public class ParqueaderoServiceImpl implements ParqueaderoService {
         if(parqueaderos.isEmpty())
             throw new NotFoundException("El Socio no tiene parqueaderos asociados o el Socio no existe");
         List<ParqueaderoResponse> parqueaderoResponses = new ArrayList<>();
-        for (Parqueadero parqueadero : parqueaderos) {
-            parqueaderoResponses.add(ParqueaderoResponse.builder()
-                    .correoSocio(parqueadero.getUsuario().getCorreo())
-                    .costo(parqueadero.getCosto())
-                    .nombre(parqueadero.getNombre())
-                    .vehiculosMaximos(parqueadero.getVehiculosMaximos())
-                    .build());
-        }
-        return parqueaderoResponses;
+        return parqueaderos
+                .stream()
+                .map(parqueadero -> ParqueaderoResponse.builder()
+                        .id(parqueadero.getId())
+                        .nombre(parqueadero.getNombre())
+                        .vehiculosMaximos(parqueadero.getVehiculosMaximos())
+                        .costo(parqueadero.getCosto())
+                        .correoSocio(parqueadero.getUsuario().getCorreo())
+                        .build())
+                .collect(Collectors.toList());
+
     }
 }

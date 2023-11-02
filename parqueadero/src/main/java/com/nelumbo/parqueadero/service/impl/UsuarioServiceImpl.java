@@ -41,9 +41,12 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .build();
         try{
             usuarioRepository.save(socio);
-            return new SocioResponse(socioRequest.getNombre(),socioRequest.getCorreo());
+            return SocioResponse.builder()
+                    .nombre(socioRequest.getNombre())
+                    .correo(socioRequest.getCorreo())
+                    .build();
         } catch (DataIntegrityViolationException e) {
-            throw new UsuarioDuplicadoException("El usuario " + socioRequest.getNombre() + " ya se encuentra registrado");
+            throw new UsuarioDuplicadoException("El usuario '" + socioRequest.getNombre() + "' ya se encuentra registrado");
         }
     }
 

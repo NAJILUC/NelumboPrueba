@@ -19,4 +19,6 @@ public interface HistoricoService {
     Double gananciasMes(Long idParqueadero);
 
     Double gananciasAnio(Long idParqueadero);
+
+    List<String> historico(Long idParqueadero);
 }

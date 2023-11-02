@@ -3,10 +3,8 @@ package com.nelumbo.parqueadero.repository;
 import com.nelumbo.parqueadero.domain.Historico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +27,9 @@ public interface HistoricoRepository extends JpaRepository <Historico, Long>{
     List<Object[]> findTop10VehiculosMasFrecuentes(Long parqueaderoId);
 
     @Query("SELECT SUM(pago) FROM Historico WHERE id_parqueadero = :parqueaderoId AND horaSalida >= :desde")
-    Double gananciasHoy(Date desde, Long parqueaderoId);
+    Double gananciasDesde(Date desde, Long parqueaderoId);
 
+    @Query(value = "SELECT DISTINCT placa FROM Historico WHERE id_parqueadero = :parqueaderoId", nativeQuery = true)
+    List<String> historialVehiculos(Long parqueaderoId);
 
 }

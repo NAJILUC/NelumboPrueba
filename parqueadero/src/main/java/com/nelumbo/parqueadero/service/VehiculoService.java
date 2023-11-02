@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public interface VehiculoService {
-    String agregarVehiculo(String placa);
+    Vehiculo agregarVehiculo(String placa);
 
     Boolean existeVehiculo(String placa);
     Boolean existeVehiculoEntrada(String placa);

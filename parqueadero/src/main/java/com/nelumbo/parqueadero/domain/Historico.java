@@ -33,6 +33,9 @@ public class Historico {
     @Column(name = "id_parqueadero")
     private Long idParqueadero;
 
+    @Column(name = "nombre_parqueadero")
+    private String nombreParqueadero;
+
     @Column(name = "pago")
     private Double pago;
 

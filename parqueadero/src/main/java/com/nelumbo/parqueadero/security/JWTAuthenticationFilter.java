@@ -1,7 +1,9 @@
 package com.nelumbo.parqueadero.security;
 
+import com.nelumbo.parqueadero.exception.CustomErrorResponse;
 import com.nelumbo.parqueadero.exception.ErrorResponseMessage;
 import com.nelumbo.parqueadero.exception.NotFoundException;
+import com.nelumbo.parqueadero.exception.UsuarioDuplicadoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,10 +26,29 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)throws AuthenticationException{
         AuthCredentials authCredentials = new AuthCredentials();
         try {
-            authCredentials = new ObjectMapper().readValue(request.getReader(),AuthCredentials.class);
-        }  catch (IOException e){
-            response.addHeader("Error","Ingrese un correo y clave");
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            authCredentials = new ObjectMapper().readValue(request.getReader(), AuthCredentials.class);
+            if (authCredentials.getCorreo() == null || authCredentials.getClave() == null || authCredentials.getCorreo().isEmpty() || authCredentials.getClave().isEmpty()) {
+                CustomErrorResponse errorResponse = new CustomErrorResponse(
+                        HttpStatus.BAD_REQUEST.value(),
+                        HttpStatus.BAD_REQUEST.toString(),
+                        "Ingrese un correo y clave"
+                );
+                response.setStatus(HttpStatus.BAD_REQUEST.value());
+                response.getWriter().write(new ObjectMapper().writeValueAsString(errorResponse));
+                return null;
+            }
+        } catch (IOException e) {
+            CustomErrorResponse errorResponse = new CustomErrorResponse(
+                    HttpStatus.BAD_REQUEST.value(),
+                    HttpStatus.BAD_REQUEST.toString(),
+                    "Ingrese un correo y clave"
+            );
+            response.setStatus(HttpStatus.BAD_REQUEST.value());
+            try {
+                response.getWriter().write(new ObjectMapper().writeValueAsString(errorResponse));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             return null;
         }
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
