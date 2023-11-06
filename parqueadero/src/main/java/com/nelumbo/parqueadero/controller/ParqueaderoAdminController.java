@@ -1,11 +1,7 @@
 package com.nelumbo.parqueadero.controller;
 
-import com.nelumbo.parqueadero.dto.request.EntradaVehiculoRequest;
 import com.nelumbo.parqueadero.dto.request.ParqueaderoActualizarRequest;
 import com.nelumbo.parqueadero.dto.request.ParqueaderoRequest;
-import com.nelumbo.parqueadero.dto.request.SalidaRequest;
-import com.nelumbo.parqueadero.dto.response.IndicadorVehiculoResponse;
-import com.nelumbo.parqueadero.dto.response.IngresoResponse;
 import com.nelumbo.parqueadero.dto.response.ParqueaderoResponse;
 import com.nelumbo.parqueadero.dto.response.SalidaResponse;
 import com.nelumbo.parqueadero.dto.response.VehiculoResponse;
@@ -101,7 +97,9 @@ public class ParqueaderoAdminController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     public SalidaResponse enviarMensaje(@Valid @RequestBody MensajeRequest mensajeRequest){
-        MensajeResponse response = microservicioMensajeService.enviarMensaje(mensajeRequest);
+        try {
+            MensajeResponse response = microservicioMensajeService.enviarMensaje(mensajeRequest);
+        } catch (Exception ignored){}
         return SalidaResponse.builder().mensaje("Correo Enviado").build();
     }
 }

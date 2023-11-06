@@ -68,6 +68,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
+    @ExceptionHandler(ObjetoNoExisteException.class)
+    public ResponseEntity<CustomErrorResponse> objetoInexistente(ObjetoNoExisteException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.NOT_FOUND.toString(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
     @ExceptionHandler(AdminAsociadoException.class)
     public ResponseEntity<CustomErrorResponse> adminAsociado(AdminAsociadoException ex) {
         CustomErrorResponse errorResponse = new CustomErrorResponse(

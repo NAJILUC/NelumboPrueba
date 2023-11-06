@@ -14,6 +14,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -30,6 +31,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private RolService rolService;
 
+    @Transactional
     @Override
     public SocioResponse guardarSocio(SocioRequest socioRequest) {
         Usuario socio = Usuario.builder()

@@ -1,6 +1,7 @@
 package com.nelumbo.parqueadero.controller;
 
 import com.nelumbo.parqueadero.dto.response.IndicadorVehiculoResponse;
+import com.nelumbo.parqueadero.dto.response.VehiculoCoincidenciaResponse;
 import com.nelumbo.parqueadero.dto.response.VehiculoResponse;
 import com.nelumbo.parqueadero.service.HistoricoService;
 import com.nelumbo.parqueadero.service.ParqueaderoVehiculoService;
@@ -51,7 +52,7 @@ public class IndicadoresController {
     @GetMapping("/coincidencia/{coincidencia}")
     @PreAuthorize("hasAuthority('SOCIO') OR hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.OK)
-    public List<VehiculoResponse> vehiculosCoinciden(@PathVariable(name = "coincidencia") String coincidencia){
+    public List<VehiculoCoincidenciaResponse> vehiculosCoinciden(@PathVariable(name = "coincidencia") String coincidencia){
         return parqueaderoVehiculoService.vehiculosCoindicencia(coincidencia);
     }
 

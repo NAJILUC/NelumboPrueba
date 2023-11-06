@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,10 +18,12 @@ public class ParqueaderoRequest {
 
     @NotNull(message = "No puede ser nulo")
     @Min(value = 1, message = "Debe ser minimo uno")
+    @Max(value = 10000, message = "Supero el numero maximo de vehiculos permitido")
     private Long vehiculosMaximos;
 
     @NotNull(message = "No puede ser nulo")
     @Min(value = 1, message = "Debe ser minimo 1")
+    @Max(value = Long.MAX_VALUE, message = "Supero el costo maximo permitido")
     private Double costo;
 
     @NotNull(message = "No puede ser nulo")

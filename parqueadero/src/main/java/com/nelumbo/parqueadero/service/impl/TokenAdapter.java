@@ -13,11 +13,11 @@ public class TokenAdapter implements IToken {
 
     @Override
     public String getUserAuthenticatedEmail(String token) {
-        return TokenUtils.getUserAuthenticatedEmail(token.replace("Bearer ",""));
+        return TokenUtils.getUserAuthenticatedEmail(token.replace("Bearer ", ""));
     }
 
     @Override
     public Long getUserAuthenticatedId(String token) {
-        return TokenUtils.getUserAuthenticatedId(token.replace("Bearer ",""));
+        return TokenUtils.getUserAuthenticatedId(token.replace("Bearer ", ""));
     }
 }
