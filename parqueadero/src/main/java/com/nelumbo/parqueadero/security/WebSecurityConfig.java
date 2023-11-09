@@ -39,7 +39,7 @@ public class WebSecurityConfig {
         return httpSecurity
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/api/v1/user/createUser", "/api/v1/user/userOwnerExist/**"
-                        ,"/swagger-ui/**", "/swagger-resources/**","/v3/api-docs/**", "/v2/api-docs/**").permitAll()
+                        ).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

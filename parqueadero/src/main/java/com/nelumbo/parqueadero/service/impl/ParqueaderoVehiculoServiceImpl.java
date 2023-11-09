@@ -29,6 +29,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -72,10 +73,11 @@ public class ParqueaderoVehiculoServiceImpl implements ParqueaderoVehiculoServic
     @Override
     @Transactional
     public Long entradaVehiculo(EntradaVehiculoRequest entradaVehiculoRequest) {
-        Parqueadero parqueadero = parqueaderoService.obtenerParqueadero(entradaVehiculoRequest.getIdParqueadero());
+            Parqueadero parqueadero = parqueaderoService.obtenerParqueadero(entradaVehiculoRequest.getIdParqueadero());
         if (parqueadero == null)
             throw new ObjetoNoExisteException("El parqueadeo con el id " + entradaVehiculoRequest.getIdParqueadero()
                     + " no existe");
+        System.out.println(parqueadero.getUsuario().getId() + " " + iToken.getUserAuthenticatedId(iToken.getBearerToken()));
         if (parqueadero.getUsuario().getId() == iToken.getUserAuthenticatedId(iToken.getBearerToken())) {
             Long vehiculosMax = parqueadero.getVehiculosMaximos();
             Long vehiculosDentro = parqueaderoVehiculoRepository.countAllByParqueaderoId(parqueadero.getId());
@@ -117,8 +119,9 @@ public class ParqueaderoVehiculoServiceImpl implements ParqueaderoVehiculoServic
         if (vehiculo == null) {
             throw new ObjetoNoExisteException("No se puede Registrar Salida, no existe la placa en algun parqueadero");
         }
-        ParqueaderoVehiculo parqueaderoVehiculo = parqueaderoVehiculoRepository.findByVehiculoId(vehiculo.getId()).get();
-        if (parqueaderoVehiculo.getParqueadero().getUsuario().getId() != iToken.getUserAuthenticatedId(iToken.getBearerToken())) {
+            ParqueaderoVehiculo parqueaderoVehiculo = parqueaderoVehiculoRepository.findByVehiculoId(vehiculo.getId())
+                    .orElseThrow(() -> new ObjetoNoExisteException("No exite el vehiculo con placa " + salidaRequest.getPlaca() + " en algun parqueadero"));
+        if (!Objects.equals(parqueaderoVehiculo.getParqueadero().getUsuario().getId(), iToken.getUserAuthenticatedId(iToken.getBearerToken()))) {
             throw new ObjetoDuplicadoException("El ID del socio no corresponde al ID del socio asociado al parqueadero");
         }
         parqueaderoVehiculoRepository.deleteById(parqueaderoVehiculo.getId());
@@ -132,6 +135,7 @@ public class ParqueaderoVehiculoServiceImpl implements ParqueaderoVehiculoServic
                         parqueaderoVehiculo.getParqueadero().getCosto())
                 .build();
         historicoService.agregarHistorico(historico);
+
     }
 
     @Override

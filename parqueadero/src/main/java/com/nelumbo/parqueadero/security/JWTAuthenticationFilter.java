@@ -23,7 +23,7 @@ import java.util.*;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)throws AuthenticationException{
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         AuthCredentials authCredentials = new AuthCredentials();
         try {
             authCredentials = new ObjectMapper().readValue(request.getReader(), AuthCredentials.class);
@@ -34,6 +34,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                         "Ingrese un correo y clave"
                 );
                 response.setStatus(HttpStatus.BAD_REQUEST.value());
+                response.setContentType("application/json");
                 response.getWriter().write(new ObjectMapper().writeValueAsString(errorResponse));
                 return null;
             }
@@ -44,6 +45,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                     "Ingrese un correo y clave"
             );
             response.setStatus(HttpStatus.BAD_REQUEST.value());
+            response.setContentType("application/json");
             try {
                 response.getWriter().write(new ObjectMapper().writeValueAsString(errorResponse));
             } catch (IOException ex) {
@@ -58,6 +60,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         );
         return getAuthenticationManager().authenticate(usernamePasswordAuthenticationToken);
     }
+
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
